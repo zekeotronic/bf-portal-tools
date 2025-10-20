@@ -4,6 +4,7 @@
   "description": "Complete TypeScript support for Battlefield Portal scripting with IntelliSense, diagnostics, and snippets",
   "version": "1.0.0",
   "publisher": "zekeotronic",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.80.0"
   },
