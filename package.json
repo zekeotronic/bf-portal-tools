@@ -1,0 +1,98 @@
+{
+  "name": "bf-portal-tools",
+  "displayName": "Battlefield Portal Tools",
+  "description": "Complete TypeScript support for Battlefield Portal scripting with IntelliSense, diagnostics, and snippets",
+  "version": "1.0.0",
+  "publisher": "zekeotronic",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zekeotronic/bf-portal-tools.git"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Linters"
+  ],
+  "keywords": [
+    "battlefield",
+    "portal",
+    "battlefield-6",
+    "game-development",
+    "typescript"
+  ],
+  "activationEvents": [
+    "onLanguage:typescript",
+    "workspaceContains:**/*.portal.ts"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "bf-portal-ts",
+        "aliases": [
+          "Battlefield Portal TypeScript"
+        ],
+        "extensions": [
+          ".portal.ts"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "bf-portal-ts",
+        "scopeName": "source.bf-portal.ts",
+        "path": "./syntaxes/bf-portal.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "typescript",
+        "path": "./snippets/bf-portal-snippets.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "bf-portal.initProject",
+        "title": "BF Portal: Initialize Project"
+      },
+      {
+        "command": "bf-portal.validateScript",
+        "title": "BF Portal: Validate Script"
+      },
+      {
+        "command": "bf-portal.updateTypes",
+        "title": "BF Portal: Update Type Definitions"
+      },
+      {
+        "command": "bf-portal.showTypeInfo",
+        "title": "BF Portal: Show Type Information"
+      }
+    ],
+    "configuration": {
+      "title": "Battlefield Portal",
+      "properties": {
+        "bfPortal.enableDiagnostics": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable BF Portal-specific diagnostics and linting"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.0.0",
+    "@vscode/vsce": "^2.19.0"
+  }
+}

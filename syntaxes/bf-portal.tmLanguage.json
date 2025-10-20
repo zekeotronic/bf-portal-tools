@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Battlefield Portal TypeScript",
+  "scopeName": "source.bf-portal.ts",
+  "patterns": [
+    {
+      "include": "source.ts"
+    },
+    {
+      "match": "\\b(mod)\\b(?=\\.)",
+      "name": "support.class.bf-portal"
+    },
+    {
+      "match": "\\b(OnGameModeStarted|OnPlayerJoinGame|OnPlayerDied|OnPlayerDeployed|OnVehicleSpawned|OnVehicleDestroyed|OnPlayerEarnedKill|OnPlayerSpawn|OnManDown|OnTimeLimitReached|OnRoundOver)\\b",
+      "name": "entity.name.function.bf-portal.event"
+    },
+    {
+      "match": "\\b(Player|Team|Vehicle|CapturePoint|Spawner|AreaTrigger|Message|WeaponUnlock|DeathType)\\b",
+      "name": "support.type.bf-portal"
+    },
+    {
+      "match": "\\b(GetAllPlayers|GetPlayerTeam|GetPlayers|CreateMessage|ShowEventGameModeMessage|SetPlayerHealth|RespawnPlayer|GetCapturePoint|GetHQ|GetAreaTrigger|IsInsideTrigger|SetCapturePointOwner)\\b",
+      "name": "entity.name.function.bf-portal"
+    }
+  ]
+}

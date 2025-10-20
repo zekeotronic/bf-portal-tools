@@ -1,0 +1,225 @@
+{
+  "Game Mode Started Handler": {
+    "prefix": ["bfOnStart", "onstart"],
+    "body": [
+      "export function OnGameModeStarted() {",
+      "\tconsole.log('Game mode started!');",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create OnGameModeStarted event handler"
+  },
+  "Player Join Handler": {
+    "prefix": ["bfOnPlayerJoin", "onjoin"],
+    "body": [
+      "export function OnPlayerJoinGame(eventPlayer: mod.Player) {",
+      "\tconsole.log('Player joined:', eventPlayer);",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create OnPlayerJoinGame event handler"
+  },
+  "Player Died Handler": {
+    "prefix": ["bfOnPlayerDied", "ondied"],
+    "body": [
+      "export function OnPlayerDied(",
+      "\teventPlayer: mod.Player,",
+      "\teventOtherPlayer: mod.Player,",
+      "\teventDeathType: mod.DeathType,",
+      "\teventWeaponUnlock: mod.WeaponUnlock",
+      "): void {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create OnPlayerDied event handler"
+  },
+  "Player Deployed Handler": {
+    "prefix": ["bfOnPlayerDeployed", "ondeployed"],
+    "body": [
+      "export function OnPlayerDeployed(eventPlayer: mod.Player): void {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create OnPlayerDeployed event handler"
+  },
+  "Vehicle Spawned Handler": {
+    "prefix": ["bfOnVehicleSpawned", "onvehicle"],
+    "body": [
+      "export async function OnVehicleSpawned(eventVehicle: mod.Vehicle) {",
+      "\tconsole.log('Vehicle spawned:', eventVehicle);",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create OnVehicleSpawned event handler"
+  },
+  "Get All Players": {
+    "prefix": ["bfGetPlayers", "getplayers"],
+    "body": [
+      "const players = mod.GetAllPlayers();",
+      "for (let i = 0; i < players.length; i++) {",
+      "\tconst player = players[i];",
+      "\t$0",
+      "}"
+    ],
+    "description": "Get and iterate through all players"
+  },
+  "Show Message": {
+    "prefix": ["bfShowMessage", "showmsg"],
+    "body": [
+      "const message = mod.CreateMessage('${1:message text}');",
+      "mod.ShowEventGameModeMessage(message, ${2:mod.GetAllPlayers()});"
+    ],
+    "description": "Create and show a message to players"
+  },
+  "Show Message to Player": {
+    "prefix": ["bfShowPlayerMessage", "showplayermsg"],
+    "body": [
+      "const message = mod.CreateMessage('${1:message text}');",
+      "mod.ShowEventGameModeMessage(message, [${2:eventPlayer}]);"
+    ],
+    "description": "Show a message to a specific player"
+  },
+  "Get Capture Point": {
+    "prefix": ["bfGetCP", "capturepoint"],
+    "body": ["const capturePoint = mod.GetCapturePoint(${1:objId});"],
+    "description": "Get a capture point by ObjId"
+  },
+  "Area Trigger Check": {
+    "prefix": ["bfAreaTrigger", "trigger"],
+    "body": [
+      "const trigger = mod.GetAreaTrigger(${1:objId});",
+      "if (mod.IsInsideTrigger(${2:eventPlayer}, trigger)) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Check if player is in area trigger"
+  },
+  "Set Player Health": {
+    "prefix": ["bfSetHealth", "sethealth"],
+    "body": ["mod.SetPlayerHealth(${1:eventPlayer}, ${2:100});"],
+    "description": "Set player health"
+  },
+  "Respawn Player": {
+    "prefix": ["bfRespawn", "respawn"],
+    "body": ["mod.RespawnPlayer(${1:eventPlayer});"],
+    "description": "Respawn a player"
+  },
+  "Get Player Team": {
+    "prefix": ["bfGetTeam", "getteam"],
+    "body": ["const team = mod.GetPlayerTeam(${1:eventPlayer});"],
+    "description": "Get a player's team"
+  },
+  "Team Check": {
+    "prefix": ["bfTeamCheck", "teamcheck"],
+    "body": [
+      "const team = mod.GetPlayerTeam(${1:eventPlayer});",
+      "if (team === mod.TeamId.${2|Team1,Team2,TeamNeutral|}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Check player's team"
+  },
+  "Console Log": {
+    "prefix": ["bfLog", "log"],
+    "body": ["console.log('${1:message}', $2);"],
+    "description": "Console log statement"
+  },
+  "Full Template": {
+    "prefix": ["bfTemplate", "template"],
+    "body": [
+      "/**",
+      " * Battlefield Portal Script",
+      " * ${1:Description}",
+      " */",
+      "",
+      "// Game state variables",
+      "let gameStarted = false;",
+      "",
+      "/**",
+      " * Called when the game mode starts",
+      " */",
+      "export function OnGameModeStarted() {",
+      "\tconsole.log('Game mode started');",
+      "\tgameStarted = true;",
+      "\t$0",
+      "}",
+      "",
+      "/**",
+      " * Called when a player joins",
+      " */",
+      "export function OnPlayerJoinGame(eventPlayer: mod.Player) {",
+      "\tconst message = mod.CreateMessage('Welcome to the server!');",
+      "\tmod.ShowEventGameModeMessage(message, [eventPlayer]);",
+      "}",
+      "",
+      "/**",
+      " * Called when a player dies",
+      " */",
+      "export function OnPlayerDied(",
+      "\teventPlayer: mod.Player,",
+      "\teventOtherPlayer: mod.Player,",
+      "\teventDeathType: mod.DeathType,",
+      "\teventWeaponUnlock: mod.WeaponUnlock",
+      "): void {",
+      "\t// Handle player death",
+      "}",
+      "",
+      "/**",
+      " * Called when a player deploys",
+      " */",
+      "export function OnPlayerDeployed(eventPlayer: mod.Player): void {",
+      "\t// Handle player deployment",
+      "}"
+    ],
+    "description": "Full Battlefield Portal template"
+  },
+  "Class Definition": {
+    "prefix": ["bfClass", "class"],
+    "body": [
+      "class ${1:ClassName} {",
+      "\tprivate ${2:property}: ${3:type};",
+      "",
+      "\tconstructor(${4:params}) {",
+      "\t\tthis.${2:property} = ${4:params};",
+      "\t}",
+      "",
+      "\tpublic ${5:method}(): ${6:void} {",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ],
+    "description": "Create a class definition"
+  },
+  "For Each Player": {
+    "prefix": ["bfForEachPlayer", "foreachplayer"],
+    "body": [
+      "const players = mod.GetAllPlayers();",
+      "players.forEach(player => {",
+      "\t$0",
+      "});"
+    ],
+    "description": "Iterate through all players with forEach"
+  },
+  "Timer/Interval": {
+    "prefix": ["bfTimer", "timer"],
+    "body": [
+      "let ${1:intervalId}: NodeJS.Timeout;",
+      "",
+      "${1:intervalId} = setInterval(() => {",
+      "\t$0",
+      "}, ${2:1000});"
+    ],
+    "description": "Create a timer/interval"
+  },
+  "Try Catch": {
+    "prefix": ["bfTryCatch", "try"],
+    "body": [
+      "try {",
+      "\t$0",
+      "} catch (error) {",
+      "\tconsole.error('Error:', error);",
+      "}"
+    ],
+    "description": "Try-catch block"
+  }
+}
